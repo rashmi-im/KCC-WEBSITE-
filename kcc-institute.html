@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KCC Institute of Technology & Management | Greater Noida</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --gold: #c9a84c;
+    --gold-light: #e8c96d;
+    --cream: #f8f4ee;
+    --white: #ffffff;
+    --text-dark: #1a2340;
+    --text-mid: #4a5568;
+    --text-light: #8a9ab5;
+    --accent: #1e3a6e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    background: rgba(10,22,40,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+    padding: 0 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 14px; text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700; font-size: 20px; color: var(--navy);
+    letter-spacing: -1px;
+  }
+  .nav-logo-text { display: flex; flex-direction: column; }
+  .nav-logo-text span:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-weight: 600; color: var(--white); letter-spacing: 1px;
+  }
+  .nav-logo-text span:last-child {
+    font-size: 10px; font-weight: 300; color: var(--gold); letter-spacing: 2px; text-transform: uppercase;
+  }
+
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.5px;
+    transition: color 0.2s; text-transform: uppercase;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy) !important; padding: 8px 20px; border-radius: 4px;
+    font-weight: 600 !important; transition: opacity 0.2s !important;
+  }
+  .nav-cta:hover { opacity: 0.85; color: var(--navy) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 50%, rgba(30,58,110,0.6) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 85% 20%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 10% 80%, rgba(10,22,40,0.8) 0%, transparent 70%);
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1300px; margin: 0 auto; padding: 0 4rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    width: 100%;
+    padding-top: 72px;
+  }
+
+  .hero-left { animation: fadeUp 1s ease both; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3);
+    padding: 6px 16px; border-radius: 100px; margin-bottom: 2rem;
+  }
+  .hero-badge span {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 500;
+  }
+  .hero-badge::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--gold); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300; line-height: 1.1; color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--gold);
+    font-weight: 400;
+  }
+  .hero-title strong {
+    font-weight: 600; display: block;
+  }
+
+  .hero-sub {
+    font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.6);
+    margin-bottom: 2.5rem; max-width: 480px; font-weight: 300;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); padding: 14px 32px; border-radius: 4px;
+    font-weight: 600; font-size: 13px; text-decoration: none;
+    letter-spacing: 0.5px; text-transform: uppercase;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,0.4); }
+
+  .btn-secondary {
+    border: 1px solid rgba(255,255,255,0.25); color: var(--white);
+    padding: 14px 32px; border-radius: 4px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.5px; text-transform: uppercase;
+    transition: all 0.2s; background: transparent;
+    font-weight: 500;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-right {
+    animation: fadeUp 1s ease 0.2s both;
+    display: flex; flex-direction: column; gap: 1.2rem;
+  }
+
+  .hero-stat-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 1.4rem 1.8rem;
+    display: flex; align-items: center; gap: 1.5rem;
+    backdrop-filter: blur(10px);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .hero-stat-card:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.05); }
+
+  .stat-icon {
+    width: 48px; height: 48px; border-radius: 10px; flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05));
+    display: flex; align-items: center; justify-content: center; font-size: 22px;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .stat-info .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 600; color: var(--gold); line-height: 1;
+  }
+  .stat-info .lbl { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; letter-spacing: 0.5px; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    padding: 12px 0; overflow: hidden;
+  }
+  .ticker-inner {
+    display: flex; gap: 3rem; white-space: nowrap;
+    animation: scroll 30s linear infinite;
+  }
+  .ticker-inner span {
+    font-size: 12px; font-weight: 600; color: var(--navy);
+    letter-spacing: 1.5px; text-transform: uppercase; flex-shrink: 0;
+  }
+  .ticker-inner span::before { content: '✦  '; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 0; }
+
+  .container { max-width: 1300px; margin: 0 auto; padding: 0 4rem; }
+
+  .section-label {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--gold); opacity: 0.4; }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300; line-height: 1.2; color: var(--text-dark);
+    margin-bottom: 1rem;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  .section-desc { font-size: 15px; color: var(--text-mid); line-height: 1.8; max-width: 600px; font-weight: 300; }
+
+  /* ── ABOUT ── */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+
+  .about-img-wrap {
+    position: relative; height: 500px;
+  }
+  .about-img-main {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--accent) 100%);
+    border-radius: 16px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-img-main::after {
+    content: '🏛️'; font-size: 120px; opacity: 0.15;
+  }
+  .about-img-pattern {
+    position: absolute; inset: 0; border-radius: 16px;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
+  }
+
+  .about-badge-float {
+    position: absolute; bottom: -20px; right: -20px;
+    background: var(--gold);
+    padding: 1.2rem 1.5rem; border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    text-align: center;
+  }
+  .about-badge-float .big { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--navy); line-height: 1; }
+  .about-badge-float .sm { font-size: 11px; font-weight: 600; color: var(--navy); letter-spacing: 1px; opacity: 0.8; }
+
+  .about-text { padding-right: 2rem; }
+  .about-text .section-desc { margin-bottom: 2rem; }
+
+  .about-points { display: flex; flex-direction: column; gap: 1rem; }
+  .about-point {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1rem 1.2rem; border-radius: 8px; border-left: 3px solid transparent;
+    transition: all 0.2s; background: var(--cream);
+  }
+  .about-point:hover { border-left-color: var(--gold); background: rgba(201,168,76,0.08); }
+  .about-point-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .about-point-text strong { display: block; font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 2px; }
+  .about-point-text span { font-size: 13px; color: var(--text-mid); }
+
+  /* ── PROGRAMS ── */
+  .programs { background: var(--cream); }
+  .programs-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
+
+  .programs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .prog-card {
+    background: var(--white); border-radius: 12px; padding: 2rem;
+    border: 1px solid rgba(0,0,0,0.06); position: relative; overflow: hidden;
+    transition: all 0.3s; cursor: pointer;
+    group: true;
+  }
+  .prog-card:hover { transform: translateY(-6px); box-shadow: 0 30px 70px rgba(0,0,0,0.1); border-color: var(--gold); }
+
+  .prog-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .prog-card:hover::before { transform: scaleX(1); }
+
+  .prog-icon { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; }
+  .prog-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;
+  }
+  .prog-card p { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 1.2rem; }
+
+  .prog-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .prog-tag {
+    background: rgba(10,22,40,0.06); color: var(--text-dark);
+    padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 500; letter-spacing: 0.3px;
+  }
+
+  .prog-arrow {
+    position: absolute; bottom: 1.5rem; right: 1.5rem;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--gold); display: flex; align-items: center; justify-content: center;
+    font-size: 14px; opacity: 0; transform: scale(0.8); transition: all 0.2s;
+  }
+  .prog-card:hover .prog-arrow { opacity: 1; transform: scale(1); }
+
+  /* ── FACILITIES ── */
+  .facilities { background: var(--navy); color: var(--white); }
+  .facilities .section-title { color: var(--white); }
+  .facilities .section-title em { color: var(--gold); }
+  .facilities .section-desc { color: rgba(255,255,255,0.6); }
+
+  .fac-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+
+  .fac-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 1.8rem; text-align: center;
+    transition: all 0.3s;
+  }
+  .fac-card:hover { background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
+  .fac-card .fac-emoji { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+  .fac-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--white); margin-bottom: 0.5rem; }
+  .fac-card p { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+  /* ── NUMBERS ── */
+  .numbers { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); padding: 4rem 0; }
+  .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .num-item { text-align: center; padding: 2rem; border-right: 1px solid rgba(10,22,40,0.15); }
+  .num-item:last-child { border-right: none; }
+  .num-item .big-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 700;
+    color: var(--navy); line-height: 1;
+  }
+  .num-item .num-label { font-size: 13px; font-weight: 600; color: var(--navy); opacity: 0.7; letter-spacing: 0.5px; margin-top: 4px; }
+
+  /* ── ADMISSIONS ── */
+  .admissions { background: var(--white); }
+  .adm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+  .adm-steps { display: flex; flex-direction: column; gap: 1.5rem; }
+  .adm-step { display: flex; gap: 1.5rem; align-items: flex-start; }
+  .step-num {
+    width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; color: var(--navy);
+  }
+  .step-content strong { display: block; font-size: 15px; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+  .step-content span { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  .adm-form-card {
+    background: var(--navy); border-radius: 16px; padding: 2.5rem;
+    position: sticky; top: 100px;
+  }
+  .adm-form-card h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--white); margin-bottom: 0.5rem;
+  }
+  .adm-form-card p { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 1.8rem; }
+
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; font-weight: 500; }
+  .form-group input, .form-group select {
+    width: 100%; padding: 10px 14px; border-radius: 6px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+    color: var(--white); font-size: 14px; font-family: 'DM Sans', sans-serif;
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus { border-color: var(--gold); }
+  .form-group input::placeholder { color: rgba(255,255,255,0.3); }
+  .form-group select option { background: var(--navy); }
+
+  .form-submit {
+    width: 100%; padding: 13px; border-radius: 6px; border: none; cursor: pointer;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); font-size: 13px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; transition: opacity 0.2s; font-family: 'DM Sans', sans-serif;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { opacity: 0.85; }
+
+  /* ── PLACEMENTS ── */
+  .placements { background: var(--cream); }
+  .place-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .company-chip {
+    background: var(--white); border: 1px solid rgba(0,0,0,0.08); border-radius: 8px;
+    padding: 1.2rem; text-align: center; display: flex; flex-direction: column;
+    align-items: center; gap: 0.5rem;
+    transition: all 0.2s;
+  }
+  .company-chip:hover { border-color: var(--gold); box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .company-chip .co-icon { font-size: 1.8rem; }
+  .company-chip .co-name { font-size: 11px; font-weight: 600; color: var(--text-dark); letter-spacing: 0.3px; }
+  .company-chip .co-pkg { font-size: 10px; color: var(--gold); font-weight: 600; }
+
+  .place-highlight {
+    display: flex; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap;
+  }
+  .ph-item { display: flex; align-items: center; gap: 0.8rem; }
+  .ph-item .ph-val {
+    font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--accent);
+  }
+  .ph-item .ph-lbl { font-size: 12px; color: var(--text-mid); max-width: 80px; line-height: 1.4; }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--navy); color: var(--white); }
+  .contact .section-title { color: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3rem; }
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .ci-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .ci-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    background: rgba(201,168,76,0.15); display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0; border: 1px solid rgba(201,168,76,0.2);
+  }
+  .ci-text strong { display: block; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 2px; letter-spacing: 0.5px; text-transform: uppercase; font-size: 11px; }
+  .ci-text span { font-size: 14px; color: var(--white); line-height: 1.6; }
+
+  .map-placeholder {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; height: 300px; display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 1rem; overflow: hidden; position: relative;
+  }
+  .map-placeholder::after {
+    content: '📍 KCC Institute of Technology & Management\nGreater Noida, Uttar Pradesh';
+    position: absolute; text-align: center; font-size: 13px; color: rgba(255,255,255,0.5); white-space: pre-line; line-height: 1.8;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #060e1a; padding: 3rem 0 1.5rem;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
+  .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.8; margin-top: 1rem; max-width: 280px; }
+  .footer-col h5 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 600; }
+  .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--white); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-bottom span { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 1024px) {
+    .hero-content, .about-grid, .adm-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .programs-grid { grid-template-columns: repeat(2, 1fr); }
+    .fac-grid { grid-template-columns: repeat(2, 1fr); }
+    .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+    .place-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    nav { padding: 0 2rem; }
+    .container { padding: 0 2rem; }
+    .hero-content { padding: 0 2rem; padding-top: 100px; }
+    .nav-links { display: none; }
+    .hero-right { display: none; }
+  }
+  @media (max-width: 600px) {
+    .programs-grid { grid-template-columns: 1fr; }
+    .fac-grid { grid-template-columns: 1fr 1fr; }
+    .numbers-grid { grid-template-columns: 1fr 1fr; }
+    .place-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">KCC</div>
+    <div class="nav-logo-text">
+      <span>KCC Institute</span>
+      <span>Greater Noida</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#facilities">Campus</a></li>
+    <li><a href="#placements">Placements</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#admissions" class="nav-cta">Apply Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge"><span>Admissions Open 2025–26</span></div>
+      <h1 class="hero-title">
+        Shape Your<br>
+        <em>Future</em> at
+        <strong>KCC Institute</strong>
+      </h1>
+      <p class="hero-sub">
+        KCC Institute of Technology & Management, Greater Noida — nurturing engineers, innovators, and leaders through world-class education and industry-aligned programmes since its founding.
+      </p>
+      <div class="hero-btns">
+        <a href="#admissions" class="btn-primary">Apply for Admission</a>
+        <a href="#programs" class="btn-secondary">Explore Programmes</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat-card">
+        <div class="stat-icon">🎓</div>
+        <div class="stat-info">
+          <div class="num">5000+</div>
+          <div class="lbl">Students Enrolled</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="stat-icon">🏆</div>
+        <div class="stat-info">
+          <div class="num">92%</div>
+          <div class="lbl">Placement Rate</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="stat-icon">🤝</div>
+        <div class="stat-info">
+          <div class="num">200+</div>
+          <div class="lbl">Industry Partners</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="stat-icon">👨‍🏫</div>
+        <div class="stat-info">
+          <div class="num">150+</div>
+          <div class="lbl">Expert Faculty</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>AICTE Approved</span>
+    <span>Dr. A.P.J. Abdul Kalam Technical University</span>
+    <span>NBA Accredited</span>
+    <span>Top Ranked in Greater Noida</span>
+    <span>100% Wi-Fi Campus</span>
+    <span>Industry-Integrated Curriculum</span>
+    <span>Modern Labs & Research Centres</span>
+    <span>AICTE Approved</span>
+    <span>Dr. A.P.J. Abdul Kalam Technical University</span>
+    <span>NBA Accredited</span>
+    <span>Top Ranked in Greater Noida</span>
+    <span>100% Wi-Fi Campus</span>
+    <span>Industry-Integrated Curriculum</span>
+    <span>Modern Labs & Research Centres</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <div class="about-img-main">
+          <div class="about-img-pattern"></div>
+          <div style="font-size:100px;opacity:0.15;position:absolute;">🏛️</div>
+        </div>
+        <div class="about-badge-float">
+          <div class="big">20+</div>
+          <div class="sm">Years of Excellence</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Building <em>tomorrow's</em><br>innovators today</h2>
+        <p class="section-desc">
+          KCC Institute of Technology & Management is one of Greater Noida's premier engineering and management institutions, approved by AICTE and affiliated to Dr. A.P.J. Abdul Kalam Technical University. We combine rigorous academics with practical exposure and strong industry connections.
+        </p>
+        <div class="about-points">
+          <div class="about-point">
+            <div class="about-point-icon">🎯</div>
+            <div class="about-point-text">
+              <strong>AICTE Approved & AKTU Affiliated</strong>
+              <span>Recognised by apex bodies ensuring quality standards in technical education.</span>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="about-point-icon">🔬</div>
+            <div class="about-point-text">
+              <strong>State-of-the-Art Research Labs</strong>
+              <span>Dedicated labs for AI, IoT, Robotics, and cutting-edge engineering disciplines.</span>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="about-point-icon">🌐</div>
+            <div class="about-point-text">
+              <strong>Industry-Academia Collaboration</strong>
+              <span>MOUs with 200+ companies for internships, live projects, and direct placements.</span>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="about-point-icon">📍</div>
+            <div class="about-point-text">
+              <strong>Prime Location in Greater Noida</strong>
+              <span>Strategically located in the NCR's thriving tech and industrial corridor.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="numbers">
+  <div class="container">
+    <div class="numbers-grid">
+      <div class="num-item"><div class="big-num">5000+</div><div class="num-label">Students</div></div>
+      <div class="num-item"><div class="big-num">92%</div><div class="num-label">Placement Rate</div></div>
+      <div class="num-item"><div class="big-num">200+</div><div class="num-label">Recruiters</div></div>
+      <div class="num-item"><div class="big-num">20+</div><div class="num-label">Years Legacy</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAMS -->
+<section class="programs" id="programs">
+  <div class="container">
+    <div class="programs-header">
+      <div>
+        <div class="section-label">Academic Offerings</div>
+        <h2 class="section-title">Our <em>Programmes</em></h2>
+      </div>
+      <a href="#admissions" class="btn-primary">Enroll Now →</a>
+    </div>
+    <div class="programs-grid">
+      <div class="prog-card">
+        <span class="prog-icon">💻</span>
+        <h3>B.Tech Computer Science</h3>
+        <p>Comprehensive 4-year programme covering algorithms, AI/ML, cloud computing, and software engineering with hands-on project work.</p>
+        <div class="prog-tags"><span class="prog-tag">AI & ML</span><span class="prog-tag">Data Science</span><span class="prog-tag">Cloud</span></div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card">
+        <span class="prog-icon">⚙️</span>
+        <h3>B.Tech Mechanical Engineering</h3>
+        <p>Industry-oriented curriculum in thermodynamics, manufacturing, CAD/CAM, and automation with advanced simulation labs.</p>
+        <div class="prog-tags"><span class="prog-tag">CAD/CAM</span><span class="prog-tag">Automation</span><span class="prog-tag">Design</span></div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card">
+        <span class="prog-icon">⚡</span>
+        <h3>B.Tech Electrical Engineering</h3>
+        <p>Covers power systems, renewable energy, control systems, and smart grid technologies with state-of-the-art electrical labs.</p>
+        <div class="prog-tags"><span class="prog-tag">Power Systems</span><span class="prog-tag">IoT</span><span class="prog-tag">Solar</span></div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card">
+        <span class="prog-icon">📡</span>
+        <h3>B.Tech Electronics & Communication</h3>
+        <p>Deep dive into VLSI, embedded systems, wireless communication, and signal processing with cutting-edge laboratory facilities.</p>
+        <div class="prog-tags"><span class="prog-tag">VLSI</span><span class="prog-tag">Embedded</span><span class="prog-tag">5G</span></div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card">
+        <span class="prog-icon">📊</span>
+        <h3>MBA (Business Management)</h3>
+        <p>Two-year postgraduate programme developing strategic thinking, leadership, and entrepreneurial skills with industry mentors.</p>
+        <div class="prog-tags"><span class="prog-tag">Finance</span><span class="prog-tag">Marketing</span><span class="prog-tag">HR</span></div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card">
+        <span class="prog-icon">🏗️</span>
+        <h3>B.Tech Civil Engineering</h3>
+        <p>Structural design, urban infrastructure, sustainable construction, and smart city technologies with real-world project exposure.</p>
+        <div class="prog-tags"><span class="prog-tag">Structural</span><span class="prog-tag">GIS</span><span class="prog-tag">Urban</span></div>
+        <div class="prog-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section class="facilities" id="facilities">
+  <div class="container">
+    <div class="section-label">Campus Life</div>
+    <h2 class="section-title">World-class <em>Facilities</em></h2>
+    <p class="section-desc">A vibrant campus designed to inspire learning, collaboration, and holistic development.</p>
+    <div class="fac-grid">
+      <div class="fac-card"><span class="fac-emoji">🔬</span><h4>Research Labs</h4><p>Advanced AI, Robotics, IoT & Embedded Systems laboratories</p></div>
+      <div class="fac-card"><span class="fac-emoji">📚</span><h4>Central Library</h4><p>50,000+ volumes, e-journals, digital resources & reading halls</p></div>
+      <div class="fac-card"><span class="fac-emoji">🏟️</span><h4>Sports Complex</h4><p>Cricket ground, football field, indoor courts and fitness centre</p></div>
+      <div class="fac-card"><span class="fac-emoji">🍽️</span><h4>Food Courts</h4><p>Multi-cuisine cafeteria serving nutritious meals across campus</p></div>
+      <div class="fac-card"><span class="fac-emoji">🏠</span><h4>Hostel</h4><p>Separate secure hostels for boys & girls with modern amenities</p></div>
+      <div class="fac-card"><span class="fac-emoji">💡</span><h4>Innovation Hub</h4><p>Startup incubator, maker space & entrepreneurship cell</p></div>
+      <div class="fac-card"><span class="fac-emoji">🚌</span><h4>Transport</h4><p>Fleet covering Greater Noida, Noida, Delhi & NCR routes</p></div>
+      <div class="fac-card"><span class="fac-emoji">🏥</span><h4>Medical Centre</h4><p>On-campus dispensary with qualified medical staff 24×7</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLACEMENTS -->
+<section class="placements" id="placements">
+  <div class="container">
+    <div class="section-label">Career Outcomes</div>
+    <h2 class="section-title">Exceptional <em>Placement</em> Record</h2>
+    <div class="place-highlight">
+      <div class="ph-item"><div class="ph-val">₹28L</div><div class="ph-lbl">Highest Package</div></div>
+      <div class="ph-item"><div class="ph-val">₹6.5L</div><div class="ph-lbl">Average Package</div></div>
+      <div class="ph-item"><div class="ph-val">92%</div><div class="ph-lbl">Students Placed</div></div>
+      <div class="ph-item"><div class="ph-val">200+</div><div class="ph-lbl">Recruiting Companies</div></div>
+    </div>
+    <div class="place-grid">
+      <div class="company-chip"><span class="co-icon">💼</span><span class="co-name">TCS</span><span class="co-pkg">Up to ₹7L</span></div>
+      <div class="company-chip"><span class="co-icon">🔵</span><span class="co-name">Infosys</span><span class="co-pkg">Up to ₹6.5L</span></div>
+      <div class="company-chip"><span class="co-icon">🟠</span><span class="co-name">Wipro</span><span class="co-pkg">Up to ₹6L</span></div>
+      <div class="company-chip"><span class="co-icon">🔴</span><span class="co-name">HCL Tech</span><span class="co-pkg">Up to ₹8L</span></div>
+      <div class="company-chip"><span class="co-icon">🟢</span><span class="co-name">Accenture</span><span class="co-pkg">Up to ₹9L</span></div>
+      <div class="company-chip"><span class="co-icon">⚫</span><span class="co-name">IBM</span><span class="co-pkg">Up to ₹12L</span></div>
+      <div class="company-chip"><span class="co-icon">🔷</span><span class="co-name">Dell</span><span class="co-pkg">Up to ₹10L</span></div>
+      <div class="company-chip"><span class="co-icon">🟡</span><span class="co-name">Cognizant</span><span class="co-pkg">Up to ₹7L</span></div>
+      <div class="company-chip"><span class="co-icon">🔵</span><span class="co-name">Capgemini</span><span class="co-pkg">Up to ₹8L</span></div>
+      <div class="company-chip"><span class="co-icon">🟠</span><span class="co-name">Tech Mahindra</span><span class="co-pkg">Up to ₹7L</span></div>
+      <div class="company-chip"><span class="co-icon">🟢</span><span class="co-name">L&T</span><span class="co-pkg">Up to ₹9L</span></div>
+      <div class="company-chip"><span class="co-icon">🔴</span><span class="co-name">Samsung</span><span class="co-pkg">Up to ₹28L</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMISSIONS -->
+<section class="admissions" id="admissions">
+  <div class="container">
+    <div class="adm-grid">
+      <div>
+        <div class="section-label">Join KCC</div>
+        <h2 class="section-title">Admission<br><em>Process</em></h2>
+        <p class="section-desc" style="margin-bottom:2.5rem;">Follow these simple steps to secure your seat at KCC Institute of Technology & Management for the 2025–26 academic year.</p>
+        <div class="adm-steps">
+          <div class="adm-step"><div class="step-num">1</div><div class="step-content"><strong>Check Eligibility</strong><span>B.Tech: 10+2 with Physics, Chemistry, Maths. MBA: Graduation with valid entrance score.</span></div></div>
+          <div class="adm-step"><div class="step-num">2</div><div class="step-content"><strong>Fill Application Form</strong><span>Submit the online form with academic details and required documents.</span></div></div>
+          <div class="adm-step"><div class="step-num">3</div><div class="step-content"><strong>Entrance & Counselling</strong><span>Appear for JEE/UPCET counselling or KCC's own entrance assessment.</span></div></div>
+          <div class="adm-step"><div class="step-num">4</div><div class="step-content"><strong>Seat Confirmation</strong><span>Pay the admission fee and confirm your seat with document verification.</span></div></div>
+          <div class="adm-step"><div class="step-num">5</div><div class="step-content"><strong>Welcome to KCC!</strong><span>Attend orientation and begin your transformative journey at KCC.</span></div></div>
+        </div>
+      </div>
+      <div class="adm-form-card">
+        <h3>Quick Enquiry</h3>
+        <p>Our admissions team will reach out within 24 hours</p>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Enter your full name">
+        </div>
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input type="tel" placeholder="+91 XXXXX XXXXX">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label>Programme of Interest</label>
+          <select>
+            <option value="">Select Programme</option>
+            <option>B.Tech – Computer Science</option>
+            <option>B.Tech – Mechanical Engineering</option>
+            <option>B.Tech – Electrical Engineering</option>
+            <option>B.Tech – Electronics & Communication</option>
+            <option>B.Tech – Civil Engineering</option>
+            <option>MBA</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Current Qualification</label>
+          <select>
+            <option value="">Select Qualification</option>
+            <option>10+2 (Appearing)</option>
+            <option>10+2 (Passed)</option>
+            <option>Graduation (Appearing)</option>
+            <option>Graduation (Passed)</option>
+          </select>
+        </div>
+        <button class="form-submit" onclick="alert('Thank you! Our admissions team will contact you shortly.')">Submit Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Contact <em>Us</em></h2>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info">
+          <div class="ci-item"><div class="ci-icon">📍</div><div class="ci-text"><strong>Address</strong><span>KCC Institute of Technology & Management<br>Greater Noida, Uttar Pradesh — 201306</span></div></div>
+          <div class="ci-item"><div class="ci-icon">📞</div><div class="ci-text"><strong>Phone</strong><span>+91-120-XXXXXXX<br>+91-XXXXXXXXXX (Admissions Helpline)</span></div></div>
+          <div class="ci-item"><div class="ci-icon">✉️</div><div class="ci-text"><strong>Email</strong><span>admissions@kccitm.ac.in<br>info@kccitm.ac.in</span></div></div>
+          <div class="ci-item"><div class="ci-icon">🕐</div><div class="ci-text"><strong>Office Hours</strong><span>Monday – Saturday: 9:00 AM – 5:00 PM<br>Sunday: Closed</span></div></div>
+          <div class="ci-item"><div class="ci-icon">🌐</div><div class="ci-text"><strong>Website</strong><span>www.kccitm.ac.in</span></div></div>
+        </div>
+      </div>
+      <div class="map-placeholder">
+        <span style="font-size:3rem">🗺️</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:40px;height:40px;background:linear-gradient(135deg,#c9a84c,#e8c96d);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:16px;color:#0a1628;">KCC</div>
+          <span style="color:white;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:500;">KCC Institute of Technology<br><span style="font-size:11px;opacity:0.5;letter-spacing:1px;font-family:'DM Sans',sans-serif;">&amp; Management, Greater Noida</span></span>
+        </div>
+        <p>Shaping future-ready professionals through innovation, integrity, and industry-focused education in the heart of Greater Noida.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Programmes</h5>
+        <a href="#">B.Tech CSE</a>
+        <a href="#">B.Tech ME</a>
+        <a href="#">B.Tech EE</a>
+        <a href="#">B.Tech ECE</a>
+        <a href="#">B.Tech Civil</a>
+        <a href="#">MBA</a>
+      </div>
+      <div class="footer-col">
+        <h5>Campus</h5>
+        <a href="#">About KCC</a>
+        <a href="#">Facilities</a>
+        <a href="#">Library</a>
+        <a href="#">Hostels</a>
+        <a href="#">Sports</a>
+        <a href="#">Student Life</a>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <a href="#">Admissions</a>
+        <a href="#">Placements</a>
+        <a href="#">Faculty</a>
+        <a href="#">Research</a>
+        <a href="#">Grievance</a>
+        <a href="#">NIRF Data</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 KCC Institute of Technology & Management, Greater Noida. All rights reserved.</span>
+      <span>AICTE Approved | AKTU Affiliated</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const el = document.querySelector(a.getAttribute('href'));
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(10,22,40,0.99)'
+      : 'rgba(10,22,40,0.97)';
+  });
+
+  // Counter animation
+  const counters = document.querySelectorAll('.big-num');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const text = el.textContent;
+        const num = parseFloat(text.replace(/[^0-9.]/g, ''));
+        const suffix = text.replace(/[0-9.]/g, '');
+        let start = 0;
+        const step = num / 60;
+        const timer = setInterval(() => {
+          start += step;
+          if (start >= num) { el.textContent = text; clearInterval(timer); }
+          else el.textContent = (Number.isInteger(num) ? Math.floor(start) : start.toFixed(1)) + suffix;
+        }, 16);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => observer.observe(c));
+</script>
+</body>
+</html>
